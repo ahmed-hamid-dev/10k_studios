@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;1,6..96,400;1,6..96,500&family=Space+Mono:wght@400;700&display=swap');
+
+/* CINEMATIC EDITORIAL - Dark & Dramatic Design System */
+
+@layer base {
+  :root {
+    /* Deep noir background with warm gold accents */
+    --background: 0 0% 4%;
+    --foreground: 45 20% 95%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 45 20% 95%;
+
+    /* Warm amber gold primary */
+    --primary: 38 85% 55%;
+    --primary-foreground: 0 0% 4%;
+
+    /* Deep charcoal secondary */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 45 20% 95%;
+
+    /* Muted tones */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
+
+    /* Rose accent */
+    --accent: 350 60% 55%;
+    --accent-foreground: 45 20% 95%;
+
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 45 20% 95%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 15%;
+    --ring: 38 85% 55%;
+
+    --radius: 0.25rem;
+
+    /* Custom design tokens */
+    --gold: 38 85% 55%;
+    --gold-muted: 38 50% 35%;
+    --noir: 0 0% 4%;
+    --cream: 45 20% 95%;
+    --rose: 350 60% 55%;
+
+    /* Typography */
+    --font-display: 'Bodoni Moda', serif;
+    --font-mono: 'Space Mono', monospace;
+
+    /* Dramatic shadows */
+    --shadow-glow: 0 0 60px hsl(38 85% 55% / 0.15);
+    --shadow-dramatic: 0 25px 80px -20px hsl(0 0% 0% / 0.8);
+
+    /* Film grain overlay */
+    --grain-opacity: 0.03;
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 45 20% 95%;
+    --sidebar-primary: 38 85% 55%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 45 20% 95%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 38 85% 55%;
+  }
+
+  .dark {
+    /* Same as root - dark by default */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-mono);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--gold-muted));
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  /* Film grain overlay */
+  .grain-overlay::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: var(--grain-opacity);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Dramatic text styles */
+  .text-outline {
+    -webkit-text-stroke: 1px hsl(var(--cream));
+    color: transparent;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+  }
+
+  /* Diagonal line decorations */
+  .diagonal-line::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, hsl(var(--gold)), transparent);
+    transform: rotate(45deg);
+  }
+
+  /* Marquee animation */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+  /* Reveal animation */
+  @keyframes reveal-up {
+    0% { 
+      opacity: 0;
+      transform: translateY(100px) skewY(5deg);
+    }
+    100% { 
+      opacity: 1;
+      transform: translateY(0) skewY(0deg);
+    }
+  }
+  .animate-reveal {
+    animation: reveal-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Glitch effect */
+  @keyframes glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    92% { transform: translate(-2px, 2px); }
+    94% { transform: translate(2px, -2px); }
+    96% { transform: translate(-2px, -2px); }
+    98% { transform: translate(2px, 2px); }
+  }
+  .hover-glitch:hover {
+    animation: glitch 0.3s ease;
+  }
+
+  /* Magnetic hover effect */
+  .magnetic {
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Split text */
+  .split-text > span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  .split-text:hover > span:nth-child(odd) {
+    transform: translateY(-5px);
+  }
+  .split-text:hover > span:nth-child(even) {
+    transform: translateY(5px);
+  }
+}
+
+@layer components {
+  /* Editorial section divider */
+  .section-divider {
+    @apply relative;
+  }
+  .section-divider::before {
+    content: '';
+    @apply absolute left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-primary/50 to-transparent;
+  }
+}
