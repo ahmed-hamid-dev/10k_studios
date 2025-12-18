@@ -1,17 +1,10 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { ArrowDownRight } from "lucide-react";
-import heroImage from "@/assets/hero/hero-wedding.jpg";
-import weddingDance from "@/assets/hero/wedding-dance.jpg";
-import engagementRing from "@/assets/hero/engagement-ring.jpg";
-import graduationPortrait from "@/assets/hero/graduation-portrait.jpg";
 
-const heroImages = [
-  heroImage,
-  weddingDance,
-  engagementRing,
-  graduationPortrait,
-];
+// Dynamically import all images from the hero folder
+const imageModules = import.meta.glob('@/assets/hero/*.{jpg,jpeg,png,gif,webp}', { eager: true });
+const heroImages = Object.values(imageModules).map((module: any) => module.default);
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);

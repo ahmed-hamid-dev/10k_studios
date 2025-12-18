@@ -28,9 +28,9 @@ const ContactForm = () => {
   };
 
   const contactInfo = [
-    { icon: Phone, label: "Phone", value: "(555) 123-4567" },
-    { icon: Mail, label: "Email", value: "hello@lumiere.studio" },
-    { icon: MapPin, label: "Studio", value: "San Francisco, CA" },
+    { icon: Phone, label: "Phone", value: "+20 123-4567" },
+    { icon: Mail, label: "Email", value: "10kstudios@gmail.com" },
+    { icon: MapPin, label: "Studio", value: "Giza, Cairo" },
     { icon: Clock, label: "Hours", value: "Mon - Sat, 9AM - 6PM" },
   ];
 

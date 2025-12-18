@@ -15,9 +15,10 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Work", href: "#portfolio", num: "01" },
-    { name: "Services", href: "#services", num: "02" },
-    { name: "Films", href: "#videos", num: "03" },
-    { name: "Contact", href: "#contact", num: "04" },
+    { name: "Gallery", href: "/gallery", num: "02" },
+    { name: "Services", href: "#services", num: "03" },
+    { name: "Films", href: "#videos", num: "04" },
+    { name: "Contact", href: "#contact", num: "05" },
   ];
 
   return (
@@ -33,7 +34,7 @@ const Navbar = () => {
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href="#home" className="group relative">
+            <a href="/" className="group relative">
               <img
                 src={logo}
                 alt="10K Studio Logo"
@@ -88,11 +89,13 @@ const Navbar = () => {
           >
             <div className="h-full flex flex-col">
               <div className="flex items-center justify-between p-6">
-                <img
-                  src={logo}
-                  alt="10K Studio Logo"
-                  className="h-10 w-auto"
-                />
+                <a href="/" onClick={() => setIsOpen(false)}>
+                  <img
+                    src={logo}
+                    alt="10K Studio Logo"
+                    className="h-10 w-auto"
+                  />
+                </a>
                 <button onClick={() => setIsOpen(false)} className="p-2 text-foreground">
                   <X size={24} />
                 </button>

@@ -223,7 +223,7 @@ const Portfolio = () => {
         className="container mx-auto px-6 mt-16 text-center"
       >
         <a
-          href="#contact"
+          href="/gallery"
           className="inline-flex items-center gap-3 px-8 py-4 border border-primary text-primary font-mono text-sm tracking-widest uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-300"
         >
           View Full Gallery
