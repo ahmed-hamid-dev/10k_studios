@@ -74,6 +74,64 @@
   .dark {
     /* Same as root - dark by default */
   }
+
+  .light {
+    /* Light mode - Warm & Elegant with #EBE1D1 */
+    --background: 42 30% 90%;  /* #EBE1D1 */
+    --foreground: 0 0% 10%;
+
+    --card: 42 25% 88%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 42 25% 88%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Warm amber gold primary - slightly darker for better contrast */
+    --primary: 38 90% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Warm beige secondary */
+    --secondary: 42 20% 85%;
+    --secondary-foreground: 0 0% 10%;
+
+    /* Muted tones */
+    --muted: 42 18% 82%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Rose accent */
+    --accent: 350 65% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 42 15% 75%;
+    --input: 42 20% 85%;
+    --ring: 38 90% 50%;
+
+    /* Custom design tokens for light mode */
+    --gold: 38 90% 50%;
+    --gold-muted: 38 60% 60%;
+    --noir: 0 0% 10%;
+    --cream: 42 30% 90%;  /* #EBE1D1 */
+    --rose: 350 65% 50%;
+
+    /* Lighter shadows */
+    --shadow-glow: 0 0 40px hsl(38 90% 50% / 0.1);
+    --shadow-dramatic: 0 15px 50px -15px hsl(0 0% 0% / 0.15);
+
+    /* More visible grain in light mode */
+    --grain-opacity: 0.04;
+
+    --sidebar-background: 42 25% 88%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 38 90% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 42 20% 85%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 42 15% 75%;
+    --sidebar-ring: 38 90% 50%;
+  }
 }
 
 @layer base {
@@ -103,8 +161,11 @@
     background: hsl(var(--background));
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--gold-muted));
+    background: hsl(var(--primary));
     border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
   }
 }
 
@@ -122,8 +183,13 @@
 
   /* Dramatic text styles */
   .text-outline {
-    -webkit-text-stroke: 1px hsl(var(--cream));
+    -webkit-text-stroke: 1px hsl(var(--foreground));
     color: transparent;
+  }
+
+  /* Dark mode specific outline */
+  .dark .text-outline {
+    -webkit-text-stroke: 1px hsl(var(--cream));
   }
 
   .text-gradient {
